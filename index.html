@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Révision permis – épreuve pratique</title>
+  <meta name="description" content="Réviser les 100 fiches de vérifications, questions de sécurité routière et premiers secours de l'épreuve pratique du permis B.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231d4ed8'/><text x='50' y='66' font-size='46' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>B</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Révision permis <span>épreuve pratique</span></h1>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-view="exam" aria-selected="true">Examen</button>
+      <button role="tab" data-view="cards">Flashcards</button>
+      <button role="tab" data-view="list">Fiches</button>
+      <button role="tab" data-view="stats">Progrès</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Simulation d'examen -->
+    <section id="view-exam" class="view">
+      <div class="intro">
+        <p>Comme le jour J : une <strong>vérification</strong> (intérieure ou extérieure), la <strong>question de sécurité routière</strong> qui va avec, puis une <strong>question de premiers secours</strong>.</p>
+        <div class="row">
+          <button class="primary" id="exam-random">Tirer une fiche au hasard</button>
+          <form id="exam-pick" class="pick">
+            <label for="exam-num">ou fiche n°</label>
+            <input id="exam-num" type="number" min="1" max="100" inputmode="numeric" placeholder="1–100">
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </div>
+      <div id="exam-stage"></div>
+    </section>
+
+    <!-- Flashcards -->
+    <section id="view-cards" class="view" hidden>
+      <div class="filters" id="card-filters">
+        <button data-cat="all" aria-pressed="true">Tout</button>
+        <button data-cat="VI" aria-pressed="false">Vérif. intérieures</button>
+        <button data-cat="VE" aria-pressed="false">Vérif. extérieures</button>
+        <button data-cat="qser" aria-pressed="false">Sécurité routière</button>
+        <button data-cat="secours" aria-pressed="false">Premiers secours</button>
+      </div>
+      <p class="hint">Les questions ratées reviennent plus souvent. Les doublons entre fiches sont regroupés.</p>
+      <div id="card-stage"></div>
+    </section>
+
+    <!-- Liste -->
+    <section id="view-list" class="view" hidden>
+      <input id="search" type="search" placeholder="Rechercher (ex. : pneus, hémorragie, feux…)" aria-label="Rechercher dans les fiches">
+      <p class="hint" id="list-count"></p>
+      <div id="list"></div>
+    </section>
+
+    <!-- Progrès -->
+    <section id="view-stats" class="view" hidden>
+      <div id="stats"></div>
+      <button class="ghost danger" id="reset">Remettre à zéro ma progression</button>
+    </section>
+  </main>
+
+  <footer>
+    Source : banque officielle des questions de l'épreuve pratique, Délégation à la Sécurité Routière (version du 1<sup>er</sup> janvier 2023).
+    Outil de révision non officiel. · <a href="https://github.com/emmanueltran/revision-permis-pratique">Code source</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
